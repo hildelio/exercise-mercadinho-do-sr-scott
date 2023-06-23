@@ -1,3 +1,7 @@
+import { CartItem } from './types/CartItem';
+import { Drink } from './types/Drink';
+import { Food } from './types/Food';
+
 export function first<T>(param: T[]): T {
   return param[0];
 }
@@ -11,4 +15,12 @@ export function updateItem<T>(array: T[], index: number, newValue: T): T[] {
     newValue,
     ...array.slice(index + 1),
   ];
+}
+
+export function buildCartItem(item: Food | Drink, quantity: number): CartItem {
+  return {
+    name: item.name,
+    price: item.price,
+    quantity,
+  };
 }
